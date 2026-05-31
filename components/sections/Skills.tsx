@@ -209,7 +209,7 @@ export function Skills() {
             className="text-center text-xs font-mono mb-6"
             style={{ color: "var(--text-muted)" }}
           >
-            // currently learning & exploring
+            {"// currently learning & exploring"}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {[

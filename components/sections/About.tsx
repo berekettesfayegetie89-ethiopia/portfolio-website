@@ -190,7 +190,7 @@ export function About() {
                 className="text-xs font-mono mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
-                // what drives me
+                {"// what drives me"}
               </p>
               <div className="flex flex-wrap gap-2">
                 {[
