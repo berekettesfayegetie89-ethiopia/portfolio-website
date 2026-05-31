@@ -1,0 +1,108 @@
+# =============================================
+# Decap CMS Configuration
+# Bereket Tesfaye Getie — Portfolio
+# =============================================
+
+backend:
+  name: github
+  repo: berekettesfayegetie89-ethiopia/bereket-portfolio
+  branch: main
+  # For local development, use:
+  # name: git-gateway
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+publish_mode: editorial_workflow
+
+collections:
+  # ─── PROJECTS ───────────────────────────────
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Long Description, name: longDescription, widget: text, required: false }
+      - label: Tech Stack
+        name: techStack
+        widget: list
+        field: { label: Technology, name: tech, widget: string }
+      - { label: Live URL, name: liveUrl, widget: string, required: false }
+      - { label: GitHub URL, name: githubUrl, widget: string, required: false }
+      - label: Image Gradient Color
+        name: imageColor
+        widget: select
+        options:
+          - from-amber-500/20 to-orange-600/20
+          - from-emerald-500/20 to-teal-600/20
+          - from-blue-500/20 to-indigo-600/20
+          - from-purple-500/20 to-pink-600/20
+          - from-red-500/20 to-rose-600/20
+      - label: Featured
+        name: featured
+        widget: boolean
+        default: false
+      - label: Status
+        name: status
+        widget: select
+        options:
+          - { label: Completed, value: completed }
+          - { label: In Progress, value: in-progress }
+          - { label: Planned, value: planned }
+      - { label: Year, name: year, widget: string }
+      - { label: Challenges, name: challenges, widget: text, required: false }
+      - { label: Lessons Learned, name: lessons, widget: text, required: false }
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+
+  # ─── BLOG POSTS ─────────────────────────────
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Publish Date, name: date, widget: datetime, format: YYYY-MM-DD }
+      - { label: Read Time, name: readTime, widget: string, default: "5 min read" }
+      - label: Tags
+        name: tags
+        widget: list
+        field: { label: Tag, name: tag, widget: string }
+      - label: Body
+        name: body
+        widget: markdown
+
+  # ─── SITE SETTINGS ──────────────────────────
+  - name: settings
+    label: Site Settings
+    files:
+      - label: About Me
+        name: about
+        file: content/data/about.json
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Role, name: role, widget: string }
+          - { label: Bio Short, name: bioShort, widget: text }
+          - { label: Bio Long, name: bioLong, widget: text }
+          - { label: University, name: university, widget: string }
+          - { label: Location, name: location, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: GitHub URL, name: githubUrl, widget: string }
+          - { label: LinkedIn URL, name: linkedinUrl, widget: string }
+          - { label: Twitter URL, name: twitterUrl, widget: string }
+          - { label: Available for Work, name: available, widget: boolean }
+          - label: Profile Photo
+            name: photo
+            widget: image
+            required: false
